@@ -20,7 +20,6 @@ stages:
             connectedServiceName: 'dev201230-js-e2e-express-server-ServiceNow DevOps Service Connection'
             changeRequestDetails: |
               {
-                "autoCloseChange": true,
                 "attributes": {
                   "requested_by": {
                     "name": "IT Support"
