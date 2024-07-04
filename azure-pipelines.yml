@@ -14,6 +14,9 @@ stages:
       displayName: 'Change Approval'
       pool:
         name: Server
+      variables:
+        startDate: $(Get-Date -Format 'o')
+        endDate: $(Get-Date -Format 'o')
       steps:
         - task: ServiceNow-DevOps-Server-Change-Acceleration@1
           inputs:
@@ -45,8 +48,8 @@ stages:
                   "priority": "2",
                   "comments": "This is a sample pipeline script to be added in your change step",
                   "work_notes": "Update this to work_notes",
-                  "start_date": "2024-09-07 11:00:00",
-                  "end_date": "2024-09-09 11:15:00"
+                  "start_date": $(startDate),
+                  "end_date": $(endDate)
                 }
               }
     
@@ -68,5 +71,6 @@ stages:
             script: |
               npm build
               npm install
+        
 
 
