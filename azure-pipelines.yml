@@ -33,7 +33,13 @@ stages:
                   "category": "Service",
                   "devops_change": true,
                   "business_service": {
-                    "name": "All"
+                    "name": "ARMS"
+                  },
+                  "service_offering": {
+                    "name": "Offering"
+                  },
+                  "cmdb_ci": {
+                    "name": "ARMS"
                   },
                   "priority": "2",
                   "comments": "This is a sample pipeline script to be added in your change step",
