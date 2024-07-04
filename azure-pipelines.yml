@@ -60,6 +60,13 @@ stages:
       steps:
         - task: NodeTool@0
           inputs:
+            versionSource: 'spec'
             versionSpec: '10.x'
+            checkLatest: true
+        - task: CmdLine@2
+          inputs:
+            script: |
+              npm build
+              npm install
 
 
