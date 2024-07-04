@@ -16,7 +16,7 @@ stages:
         name: Server
       variables:
         startDate: $[format('{0:yyyy}-{0:MM}-{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
-        endDate: $[format('{0:yyyy}.{0:MM}.{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
+        endDate: $[format('{0:yyyy}-{0:MM}-{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
       steps:
         - task: ServiceNow-DevOps-Server-Change-Acceleration@1
           inputs:
