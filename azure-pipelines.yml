@@ -48,9 +48,10 @@ stages:
                   "comments": "This is a sample pipeline script to be added in your change step",
                   "work_notes": "Update this to work_notes",
                   "start_date": "$(startDate)"
-                },
-                "applicationName": "ARMS"
+                }
               }
+            applicationName: 'ARMS'
+              
     
     - job: nodeDev
       displayName: 'Install Node.js'
