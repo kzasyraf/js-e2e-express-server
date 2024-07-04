@@ -48,8 +48,8 @@ stages:
                   "priority": "2",
                   "comments": "This is a sample pipeline script to be added in your change step",
                   "work_notes": "Update this to work_notes",
-                  "start_date": $(startDate),
-                  "end_date": $(endDate)
+                  "start_date": "$(startDate)",
+                  "end_date": "$(endDate)"
                 }
               }
     
