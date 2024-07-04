@@ -23,7 +23,7 @@ stages:
                 "autoCloseChange": true,
                 "attributes": {
                   "requested_by": {
-                    "name": "IT Support"
+                    "name": "DevOps Integration User"
                   },
                   "assignment_group": {
                     "name": "Change Management"
