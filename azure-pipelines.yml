@@ -16,7 +16,7 @@ jobs:
     steps:
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
-          connectedServiceName: 'dev201230-js-e2e-express-server-ServiceNow DevOps Service Connection'
+          connectedServiceName: 'dev201230-ARMS-ServiceNow DevOps Service Connection'
           changeRequestDetails: |
             {
               "autoCloseChange": true,
