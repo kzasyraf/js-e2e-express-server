@@ -6,16 +6,27 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage: ServiceNowDev
+  displayName: 
+  jobs:
+    - job: nodeDev
+      displayName: 'Install Node.js'
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '10.x'
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+    - job: ServiceNowChangeRecord
+      dependsOn:
+      - nodeDev
+      condition: succeeded()
+      pool:
+        name: Server
+      steps:
+        - task: ServiceNow-DevOps-Server-Change-Acceleration@1
+          inputs:
+            connectedServiceName: 'dev201230-js-e2e-express-server-ServiceNow DevOps Service Connection'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
