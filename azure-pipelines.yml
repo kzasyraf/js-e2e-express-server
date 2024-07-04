@@ -49,7 +49,7 @@ jobs:
               }
             }
           applicationName: 'ARMS'
-        name: 'ChangeApproval'
+        name: 'ChangeApprovala'
   - job: nodeDev
     displayName: 'Install Node.js'
     dependsOn:
