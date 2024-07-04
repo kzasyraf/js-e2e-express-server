@@ -41,6 +41,7 @@ jobs:
                 "cmdb_ci": {
                   "name": "ARMS"
                 },
+                "type": "Normal",
                 "priority": "2",
                 "comments": "This is a sample pipeline script to be added in your change step",
                 "work_notes": "Update this to work_notes",
