@@ -26,7 +26,7 @@ stages:
                     "name": "DevOps Integration User"
                   },
                   "assignment_group": {
-                    "name": "Change Management"
+                    "name": "ARMS Support"
                   },
                   "chg_model": {
                     "name": "DevOps"
