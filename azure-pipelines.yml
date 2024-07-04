@@ -15,8 +15,8 @@ stages:
       pool:
         name: Server
       variables:
-        startDate: $(Get-Date -Format 'o')
-        endDate: $(Get-Date -Format 'o')
+        startDate: $(pipeline.startTime)
+        endDate: $(pipeline.startTime)
       steps:
         - task: ServiceNow-DevOps-Server-Change-Acceleration@1
           inputs:
