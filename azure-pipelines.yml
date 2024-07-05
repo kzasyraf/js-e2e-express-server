@@ -15,8 +15,6 @@ jobs:
     steps:
       - powershell: echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate)"
         name: setParameter
-      - script: echo $(setParameter.startDate)
-        name: echovar
   - job: ChangeRequest
     dependsOn:
       - Parameter
