@@ -16,7 +16,7 @@ jobs:
     steps:
       - task: queryWorkItems@0
         inputs:
-          queryId: 2
+          queryId: 2c9c305e-42c4-4b40-9fdc-677c4ab17722
         name: 'WorkItem'
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
