@@ -17,6 +17,7 @@ jobs:
         inputs:
           workItemType: 'Task'
           title: 'New Build $(Build.BuildNumber) $(Build.DefinitionName)'
+          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
           associate: true
           authType: 'internal'
       - powershell: echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate)"
