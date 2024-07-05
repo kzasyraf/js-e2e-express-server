@@ -72,6 +72,6 @@ jobs:
             npm build
             npm install
       - bash: |
-          echo $(MAPPED_OUTPUT)
+          echo "$(MAPPED_OUTPUT)"
         env:
           MAPPED_OUTPUT: $(ChangeApproval)
