@@ -14,6 +14,10 @@ jobs:
     variables:
       startDate: $[format('{0:yyyy}-{0:MM}-{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
     steps:
+      - task: queryWorkItems@0
+        inputs:
+          queryId: 2
+        name: 'WorkItem'
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
           connectedServiceName: 'dev201230-ARMS-ServiceNow DevOps Service Connection'
