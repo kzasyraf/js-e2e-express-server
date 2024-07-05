@@ -13,12 +13,8 @@ jobs:
       name: Server
     variables:
       startDate: $[format('{0:yyyy}-{0:MM}-{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
+      output: $(ChangeApproval)
     steps:
-
-      - task: queryWorkItems@0
-        inputs:
-          queryId: 'Open Work Item'
-        name: 'WorkItem'
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
           connectedServiceName: 'dev201230-ARMS-ServiceNow DevOps Service Connection'
@@ -73,3 +69,7 @@ jobs:
           script: |
             npm build
             npm install
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo $(output)
