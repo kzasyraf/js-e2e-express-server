@@ -7,16 +7,29 @@ trigger:
 - main
 
 jobs:
-  - job: ServiceNowChangeRecord
-    displayName: 'Change Approval'
+  - job: Parameter
+    pool:
+      vmImage: ubuntu-latest
+    variables:
+      currentDate: $(Get-Date -Format 'yyyy-MM-dd HH:00:00')
+    steps:
+      - powershell: echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate)"
+        name: setParameter
+      - script: echo $(setParameter.startDate)
+        name: echovar
+  - job: ChangeRequest
+    dependsOn:
+      - Parameter
+    condition: succeeded()
     pool:
       name: Server
     variables:
-      startDate: $[format('{0:yyyy}-{0:MM}-{0:dd} {0:HH}:{0:mm}:{0:ss}', pipeline.startTime)]
+      startDate: $[ dependencies.Parameter.outputs['setParameter.startDate'] ]
     steps:
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
           connectedServiceName: 'dev201230-ARMS-ServiceNow DevOps Service Connection'
+          applicationName: 'ARMS'
           changeRequestDetails: |
             {
               "autoCloseChange": true,
@@ -48,29 +61,3 @@ jobs:
                 "start_date": "$(startDate)"
               }
             }
-          applicationName: 'ARMS'
-        name: 'ChangeApproval'
-  - job: nodeDev
-    displayName: 'Install Node.js'
-    dependsOn:
-    - ServiceNowChangeRecord
-    condition: succeeded()
-    pool:
-      vmImage: ubuntu-latest
-    variables:
-      approval: $[ dependencies.ServiceNowChangeRecord.outputs['ChangeApproval.number'] ]
-    steps:
-      - task: NodeTool@0
-        inputs:
-          versionSource: 'spec'
-          versionSpec: '10.x'
-          checkLatest: true
-      - task: CmdLine@2
-        inputs:
-          script: |
-            npm build
-            npm install
-      - task: CmdLine@2
-        inputs:
-          script: |
-            echo $(approval)
