@@ -13,6 +13,12 @@ jobs:
     variables:
       currentDate: $(Get-Date -Format 'yyyy-MM-dd HH:00:00')
     steps:
+      - task: CreateWorkItem@2
+        inputs:
+          workItemType: 'Task'
+          title: 'New Build $(Build.BuildNumber) $(Build.DefinitionName)'
+          associate: true
+          authType: 'internal'
       - powershell: echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate)"
         name: setParameter
   - job: ChangeRequest
