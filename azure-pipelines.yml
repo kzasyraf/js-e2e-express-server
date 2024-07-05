@@ -58,7 +58,7 @@ jobs:
     pool:
       vmImage: ubuntu-latest
     variables:
-      approval: $[ dependencies.ServiceNowChangeRecord.outputs['ChangeApproval'] ]
+      approval: $[ dependencies.ServiceNowChangeRecord.outputs['ChangeApproval.number'] ]
     steps:
       - task: NodeTool@0
         inputs:
@@ -70,5 +70,7 @@ jobs:
           script: |
             npm build
             npm install
-      - script: |
-          echo "$(approval)"
+      - task: CmdLine@2
+        inputs:
+          script: |
+            echo $(approval)
