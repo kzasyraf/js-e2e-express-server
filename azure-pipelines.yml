@@ -6,9 +6,6 @@
 trigger:
 - main
 
-variables:
-  GLOBAL_OUTPUT: $(ChangeApproval)
-
 jobs:
   - job: ServiceNowChangeRecord
     displayName: 'Change Approval'
@@ -60,6 +57,8 @@ jobs:
     condition: succeeded()
     pool:
       vmImage: ubuntu-latest
+    variables:
+      approval: $[ dependencies.ServiceNowChangeRecord.outputs['ChangeApproval'] ]
     steps:
       - task: NodeTool@0
         inputs:
@@ -71,7 +70,5 @@ jobs:
           script: |
             npm build
             npm install
-      - bash: |
-          echo "$MAPPED_OUTPUT"
-        env:
-          MAPPED_OUTPUT: $(ChangeApproval)
+      - script: |
+          echo "$(approval)"
