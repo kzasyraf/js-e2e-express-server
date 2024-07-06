@@ -55,9 +55,8 @@ jobs:
                 },
                 "type": "Normal",
                 "priority": "2",
-                "short_description": 'New Build $(Build.BuildNumber) $(Build.DefinitionName)',
                 "comments": "This is a sample pipeline script to be added in your change step",
-                "work_notes": "Update this to work_notes",
+                "work_notes": 'New Build $(Build.BuildNumber) $(Build.DefinitionName)',
                 "start_date": "$(startDate)"
               }
             }
