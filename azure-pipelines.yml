@@ -36,7 +36,6 @@ jobs:
         inputs:
           workItemType: 'Task'
           title: 'Implementation - $(Build.BuildNumber)'
-          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
           fieldMappings: |
@@ -51,7 +50,6 @@ jobs:
         inputs:
           workItemType: 'Test Case'
           title: 'Testing - $(Build.BuildNumber)'
-          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
           fieldMappings: |
@@ -65,19 +63,4 @@ jobs:
           createOutputs: true
           outputVariables: |
             childID=ID
-          authType: 'internal'
-      - task: CreateWorkItem@2
-        inputs:
-          workItemType: 'Test Suite'
-          title: 'New Release - $(Build.BuildNumber)'
-          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
-          areaPath: $(areaPath)
-          iterationPath: $(iterationPath)
-          fieldMappings: |
-            Test Suite Type=Requirement Based
-          linkWorkItems: true
-          linkType: 'Microsoft.VSTS.Common.TestedBy-Forward'
-          linkTarget: 'id'
-          targetId: $(childID)
-          limitWorkItemLinksToSameProject: true
           authType: 'internal'
