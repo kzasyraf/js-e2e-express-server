@@ -8,6 +8,7 @@ trigger:
 
 jobs:
   - job: CreateWorkItem
+    condition: succeeded()
     pool:
       vmImage: ubuntu-latest
     variables:
@@ -17,7 +18,7 @@ jobs:
       - task: CreateWorkItem@2
         inputs:
           workItemType: 'Product Backlog Item'
-          title: 'New Build - $(Build.BuildNumber)'
+          title: 'New Release - $(Build.BuildNumber)'
           assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
@@ -28,14 +29,32 @@ jobs:
             Business Value=10
           associate: true
           createOutputs: true
-          outputVariables: 'parentID=ID'
+          outputVariables: |
+            parentID=ID
           authType: 'internal'
       - task: CreateWorkItem@2
         inputs:
           workItemType: 'Task'
-          title: 'Implementation'
+          title: 'Implementation - $(Build.BuildNumber)'
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
+          fieldMappings: |
+            Tags=Implementation
+          linkWorkItems: true
+          linkType: 'System.LinkTypes.Hierarchy-Reverse'
+          linkTarget: 'id'
+          targetId: $(parentID)
+          limitWorkItemLinksToSameProject: true
+          authType: 'internal'
+      - task: CreateWorkItem@2
+        inputs:
+          workItemType: 'Test Case'
+          title: 'Testing - $(Build.BuildNumber)'
+          areaPath: $(areaPath)
+          iterationPath: $(iterationPath)
+          fieldMappings: |
+            Tags=Testing
+            Automation status=Planned
           linkWorkItems: true
           linkType: 'System.LinkTypes.Hierarchy-Reverse'
           linkTarget: 'id'
