@@ -76,7 +76,7 @@ jobs:
             Description=Hello World!
             Acceptance Criteria=Needs further details from @<itsupport@uatsandbox.onmicrosoft.com>
             Effort=1
-            Business Value=
+            Business Value=High
           associate: true
           authType: 'internal'
       
