@@ -46,7 +46,7 @@ jobs:
                   "name": "ARMS Support"
                 },
                 "chg_model": {
-                  "name": "Change Registration"
+                  "name": "DevOps"
                 },
                 "category": "Service",
                 "devops_change": true,
