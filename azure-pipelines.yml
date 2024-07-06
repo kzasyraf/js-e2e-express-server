@@ -7,24 +7,17 @@ trigger:
 - main
 
 jobs:
-  - job: Parameter
+  - job: CreateParameter
     pool:
       vmImage: ubuntu-latest
     variables:
       currentDate: $(Get-Date -Format 'yyyy-MM-dd HH:00:00')
     steps:
-      - task: CreateWorkItem@2
-        inputs:
-          workItemType: 'Task'
-          title: 'New Build $(Build.BuildNumber) $(Build.DefinitionName)'
-          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
-          associate: true
-          authType: 'internal'
       - powershell: echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate)"
         name: setParameter
-  - job: ChangeRequest
+  - job: CreateChangeRequest
     dependsOn:
-      - Parameter
+      - CreateParameter
     condition: succeeded()
     pool:
       name: Server
@@ -64,3 +57,26 @@ jobs:
                 "start_date": "$(startDate)"
               }
             }
+  - job: CreateWorkItem
+    dependsOn:
+      - CreateParameter
+      - CreateChangeRequest
+    condition: succeeded()
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - task: CreateWorkItem@2
+        inputs:
+          workItemType: 'Product Backlog Item'
+          title: 'New Build - $(Build.BuildNumber)'
+          assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
+          areaPath: 'ARMS'
+          iterationPath: 'ARMS\Sprint 1'
+          fieldMappings: |
+            Description=Hello World!
+            Acceptance Criteria=Needs further details from @<IT Support> Seems to add to the changes introduced by !42 - (this identity only works with Azure DevOps Services)
+            Effort=1
+            Business Value=
+          associate: true
+          authType: 'internal'
+      
