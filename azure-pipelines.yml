@@ -22,7 +22,7 @@ jobs:
     pool:
       name: Server
     variables:
-      startDate: $[ dependencies.Parameter.outputs['setParameter.startDate'] ]
+      startDate: $[ dependencies.CreateParameter.outputs['setParameter.startDate'] ]
     steps:
       - task: ServiceNow-DevOps-Server-Change-Acceleration@1
         inputs:
@@ -74,7 +74,7 @@ jobs:
           iterationPath: 'ARMS\Sprint 1'
           fieldMappings: |
             Description=Hello World!
-            Acceptance Criteria=Needs further details from @<IT Support> Seems to add to the changes introduced by !42
+            Acceptance Criteria=Needs further details from @<itsupport@uatsandbox.onmicrosoft.com>
             Effort=1
             Business Value=
           associate: true
