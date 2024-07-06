@@ -17,8 +17,8 @@ jobs:
         inputs:
           targetType: 'inline'
           script: |
-            echo "##vso[task.setvariable variable=startDate;isOutput=true]$(currentDate).ToString('yyyy-MM-dd HH:mm:ss')"
-            echo "##vso[task.setvariable variable=endDate;isOutput=true]$(currentDate).AddHours(1).ToString('yyyy-MM-dd HH:mm:ss')"
+            echo "##vso[task.setvariable variable=startDate;isOutput=true]($currentDate).ToString('yyyy-MM-dd HH:00:00')"
+            echo "##vso[task.setvariable variable=endDate;isOutput=true]($currentDate).AddHours(1).ToString('yyyy-MM-dd HH:00:00')"
           pwsh: true
         name: setParameter
   - job: CreateChangeRequest
