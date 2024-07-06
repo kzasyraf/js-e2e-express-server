@@ -30,5 +30,16 @@ jobs:
           createOutputs: true
           outputVariables: 'parentID=ID'
           authType: 'internal'
-      - script: echo $(parentID)
+      - task: CreateWorkItem@2
+        inputs:
+          workItemType: 'Task'
+          title: 'Implementation'
+          areaPath: $(areaPath)
+          iterationPath: $(iterationPath)
+          linkWorkItems: true
+          linkType: 'Parent'
+          linkTarget: 'id'
+          targetId: $(parentID)
+          limitWorkItemLinksToSameProject: true
+          authType: 'internal'
       
