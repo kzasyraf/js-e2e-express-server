@@ -58,7 +58,7 @@ jobs:
                 },
                 "type": "Normal",
                 "priority": "2",
-                "short_description": "ARMS - New Build",
+                "short_description": "ARMS - New Build - $(Build.BuildNumber)",
                 "comments": "This is a sample pipeline script to be added in your change step",
                 "work_notes": "New Build $(Build.BuildNumber)",
                 "start_date": "$(startDate)"
