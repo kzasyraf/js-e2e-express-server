@@ -37,7 +37,7 @@ jobs:
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
           linkWorkItems: true
-          linkType: 'Parent'
+          linkType: 'System.LinkTypes.Hierarchy-Reverse'
           linkTarget: 'id'
           targetId: $(parentID)
           limitWorkItemLinksToSameProject: true
