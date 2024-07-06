@@ -45,6 +45,9 @@ jobs:
                 "assignment_group": {
                   "name": "ARMS Support"
                 },
+                "chg_model": {
+                  "name": "Change Registration"
+                },
                 "category": "Service",
                 "devops_change": true,
                 "business_service": {
@@ -55,8 +58,9 @@ jobs:
                 },
                 "type": "Normal",
                 "priority": "2",
+                "short_description": "ARMS - New Build $(Build.BuildNumber)",
                 "comments": "This is a sample pipeline script to be added in your change step",
-                "work_notes": 'New Build $(Build.BuildNumber) $(Build.DefinitionName)',
+                "work_notes": 'New Build $(Build.BuildNumber)',
                 "start_date": "$(startDate)"
               }
             }
