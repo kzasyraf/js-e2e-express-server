@@ -53,6 +53,9 @@ jobs:
                 "business_service": {
                   "name": "ARMS"
                 },
+                "service_offering": {
+                  "name": "Offering"
+                },
                 "type": "Normal",
                 "priority": "2",
                 "short_description": "ARMS - New Build",
