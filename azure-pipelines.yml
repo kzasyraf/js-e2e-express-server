@@ -32,6 +32,5 @@ jobs:
             'ID=ID'
             'Iteration=System.IterationPath'
           authType: 'internal'
-        name: ParentVar
-      - script: echo $(ParentVar.Iteration)
+      - script: echo $(ID)
       
