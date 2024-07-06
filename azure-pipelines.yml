@@ -11,14 +11,15 @@ jobs:
     pool:
       vmImage: ubuntu-latest
     variables:
-      currentDate: $(Get-Date)
+      startTime: $(Get-Date).ToString('yyyy-MM-dd HH:00:00')
+      endTime: $(Get-Date).AddHours(1).ToString('yyyy-MM-dd HH:00:00')
     steps:
       - task: PowerShell@2
         inputs:
           targetType: 'inline'
           script: |
-            echo "##vso[task.setvariable variable=startDate;isOutput=true]($currentDate).ToString('yyyy-MM-dd HH:00:00')"
-            echo "##vso[task.setvariable variable=endDate;isOutput=true]($currentDate).AddHours(1).ToString('yyyy-MM-dd HH:00:00')"
+            echo "##vso[task.setvariable variable=startDate;isOutput=true]$(startTime)"
+            echo "##vso[task.setvariable variable=endDate;isOutput=true]$(endTime)"
           pwsh: true
         name: setParameter
   - job: CreateChangeRequest
