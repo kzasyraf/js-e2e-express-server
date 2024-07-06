@@ -73,6 +73,8 @@ jobs:
           assignedTo: 'IT Admin <admin@uatsandbox.onmicrosoft.com>'
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
+          fieldMappings: |
+            Test Suite Type=Requirement Based
           linkWorkItems: true
           linkType: 'Microsoft.VSTS.Common.TestedBy-Forward'
           linkTarget: 'id'
