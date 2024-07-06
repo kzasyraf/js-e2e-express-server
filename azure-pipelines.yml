@@ -29,7 +29,7 @@ jobs:
           associate: true
           createOutputs: true
           outputVariables: |
-            'ID=id'
+            'ID=ID'
             'Iteration=System.IterationPath'
           authType: 'internal'
         name: Parent
@@ -42,7 +42,7 @@ jobs:
           linkWorkItems: true
           linkType: 'Parent'
           linkTarget: 'id'
-          targetId: '$(Parent.ID)'
+          targetId: $(Parent.ID)
           limitWorkItemLinksToSameProject: true
           authType: 'internal'
       
