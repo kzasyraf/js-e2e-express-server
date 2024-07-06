@@ -32,17 +32,6 @@ jobs:
             'ID=ID'
             'Iteration=System.IterationPath'
           authType: 'internal'
-        name: Parent
-      - task: CreateWorkItem@2
-        inputs:
-          workItemType: 'Task'
-          title: 'Implementation'
-          areaPath: $(areaPath)
-          iterationPath: $(iterationPath)
-          linkWorkItems: true
-          linkType: 'Parent'
-          linkTarget: 'id'
-          targetId: $(Parent.ID)
-          limitWorkItemLinksToSameProject: true
-          authType: 'internal'
+        name: ParentVar
+      - script: echo $(ParentVar.ID)
       
