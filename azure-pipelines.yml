@@ -45,6 +45,9 @@ jobs:
                 "assignment_group": {
                   "name": "ARMS Support"
                 },
+                "chg_model": {
+                  "name": "DevOps"
+                },
                 "category": "Service",
                 "devops_change": true,
                 "business_service": {
