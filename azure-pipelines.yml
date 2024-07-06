@@ -28,7 +28,9 @@ jobs:
             Business Value=10
           associate: true
           createOutputs: true
-          outputVariables: 'newID=ID'
+          outputVariables:  |
+            'newID=ID'
           authType: 'internal'
-      - script: echo $(newID)
+        name: ParentItem
+      - script: echo $(ParentItem.newID)
       
