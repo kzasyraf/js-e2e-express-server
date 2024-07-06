@@ -74,7 +74,7 @@ jobs:
           iterationPath: 'ARMS\Sprint 1'
           fieldMappings: |
             Description=Hello World!
-            Acceptance Criteria=Needs further details from @<IT Support> Seems to add to the changes introduced by !42 - (this identity only works with Azure DevOps Services)
+            Acceptance Criteria=Needs further details from @<IT Support> Seems to add to the changes introduced by !42
             Effort=1
             Business Value=
           associate: true
