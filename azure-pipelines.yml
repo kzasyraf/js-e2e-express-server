@@ -11,8 +11,8 @@ jobs:
     pool:
       vmImage: ubuntu-latest
     variables:
-      startTime: $(Get-Date).ToUniversalTime().ToString('yyyy-MM-dd HH:00:00')
-      endTime: $(Get-Date).AddHours(1).ToUniversalTime().ToString('yyyy-MM-dd HH:00:00')
+      startTime: $((Get-Date).ToUniversalTime().ToString('yyyy-MM-dd HH:00:00'))
+      endTime: $((Get-Date).AddHours(1).ToUniversalTime().ToString('yyyy-MM-dd HH:00:00'))
     steps:
       - task: PowerShell@2
         inputs:
