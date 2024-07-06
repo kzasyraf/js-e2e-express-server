@@ -28,9 +28,7 @@ jobs:
             Business Value=10
           associate: true
           createOutputs: true
-          outputVariables: |
-            'ID=ID'
-            'Iteration=System.IterationPath'
+          outputVariables: 'newID=ID'
           authType: 'internal'
-      - script: echo $(ID)
+      - script: echo $(newID)
       
