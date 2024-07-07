@@ -6,6 +6,11 @@
 trigger:
 - main
 
+variables:
+- group: "Work Item Group"
+- name: patSecret
+  value: $[variables.PAT]
+
 jobs:
   - job: CreateParameter
     pool:
@@ -93,7 +98,8 @@ jobs:
           createOutputs: true
           outputVariables: |
             parentID=ID
-          authType: 'internal'
+          authType: 'pat'
+          authToken: $(patSecret)
       - task: CreateWorkItem@2
         inputs:
           workItemType: 'Task'
@@ -107,7 +113,8 @@ jobs:
           linkType: 'System.LinkTypes.Hierarchy-Reverse'
           linkTarget: 'associate'
           limitWorkItemLinksToSameProject: true
-          authType: 'internal'
+          authType: 'pat'
+          authToken: $(patSecret)
       - task: CreateWorkItem@2
         inputs:
           workItemType: 'Test Case'
@@ -122,5 +129,6 @@ jobs:
           linkType: 'Microsoft.VSTS.Common.TestedBy-Reverse'
           linkTarget: 'associate'
           limitWorkItemLinksToSameProject: true
-          authType: 'internal'
+          authType: 'pat'
+          authToken: $(patSecret)
       
