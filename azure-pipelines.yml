@@ -111,7 +111,7 @@ jobs:
           associate: true
           linkWorkItems: true
           linkType: 'System.LinkTypes.Hierarchy-Reverse'
-          linkTarget: 'ID'
+          linkTarget: 'id'
           targetId: $(parentID)
           limitWorkItemLinksToSameProject: true
           authType: 'pat'
@@ -128,7 +128,7 @@ jobs:
           associate: true
           linkWorkItems: true
           linkType: 'Microsoft.VSTS.Common.TestedBy-Reverse'
-          linkTarget: 'ID'
+          linkTarget: 'id'
           targetId: $(parentID)
           limitWorkItemLinksToSameProject: true
           authType: 'pat'
