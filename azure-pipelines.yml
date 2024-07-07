@@ -90,6 +90,7 @@ jobs:
           areaPath: $(areaPath)
           iterationPath: $(iterationPath)
           fieldMappings: |
+            Tags=Release
             Description=Hello World!
             Acceptance Criteria=Needs further details from @<IT Support>
             Effort=1
@@ -114,20 +115,6 @@ jobs:
           linkTarget: 'id'
           targetId: $(parentID)
           limitWorkItemLinksToSameProject: true
-          authType: 'pat'
-          authToken: $(patSecret)
-      - task: CreateWorkItem@2
-        inputs:
-          workItemType: 'Test Suite'
-          title: 'New Release - $(Build.BuildNumber)'
-          areaPath: '$(areaPath)'
-          iterationPath: '$(iterationPath)'
-          fieldMappings: |
-            State=In Progress
-            Reason=New test suite
-            Microsoft.VSTS.TCM.TestSuiteTypeId=3
-            Microsoft.VSTS.TCM.TestSuiteType=Requirement Based
-          associate: true
           authType: 'pat'
           authToken: $(patSecret)
       - task: CreateWorkItem@2
