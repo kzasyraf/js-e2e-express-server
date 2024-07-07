@@ -91,7 +91,7 @@ jobs:
           iterationPath: $(iterationPath)
           fieldMappings: |
             Description=Hello World!
-            Acceptance Criteria=Needs further details from @<itsupport@uatsandbox.onmicrosoft.com>
+            Acceptance Criteria=Needs further details from @<IT Support>
             Effort=1
             Business Value=10
           associate: true
@@ -114,6 +114,20 @@ jobs:
           linkTarget: 'id'
           targetId: $(parentID)
           limitWorkItemLinksToSameProject: true
+          authType: 'pat'
+          authToken: $(patSecret)
+      - task: CreateWorkItem@2
+        inputs:
+          workItemType: 'Test Suite'
+          title: 'New Release - $(Build.BuildNumber)'
+          areaPath: '$(areaPath)'
+          iterationPath: '$(iterationPath)'
+          fieldMappings: |
+            State=In Progress
+            Reason=New test suite
+            Microsoft.VSTS.TCM.TestSuiteTypeId=3
+            Microsoft.VSTS.TCM.TestSuiteType=Requirement Based
+          associate: true
           authType: 'pat'
           authToken: $(patSecret)
       - task: CreateWorkItem@2
