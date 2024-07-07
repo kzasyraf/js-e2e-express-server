@@ -110,6 +110,17 @@ jobs:
           authType: 'internal'
       - task: CreateWorkItem@2
         inputs:
+          workItemType: 'Test Suite'
+          title: 'New Release - $(Build.BuildNumber)'
+          areaPath: '$(areaPath)'
+          iterationPath: '$(iterationPath)'
+          fieldMappings: |
+            Microsoft.VSTS.TCM.TestSuiteTypeId=3
+            Microsoft.VSTS.TCM.TestSuiteType=Requirement Based
+            Microsoft.VSTS.TCM.TestSuiteAudit=Added test suite to parent: 8
+          authType: 'internal'
+      - task: CreateWorkItem@2
+        inputs:
           workItemType: 'Test Case'
           title: 'Testing - $(Build.BuildNumber)'
           areaPath: '$(areaPath)'
