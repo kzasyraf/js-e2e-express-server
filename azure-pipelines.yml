@@ -126,6 +126,10 @@ jobs:
             Tags=Testing
             Automation status=Planned
           associate: true
+          linkWorkItems: true
+          linkType: 'Microsoft.VSTS.Common.TestedBy-Reverse'
+          linkTarget: 'associate'
+          limitWorkItemLinksToSameProject: true
           authType: 'pat'
           authToken: $(patSecret)
       
